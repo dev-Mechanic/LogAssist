@@ -16,11 +16,14 @@ import tripsgen.FrequencyType;
  */
 public class LogBook {
     ArrayList<LogRecord> logBook;
-    
+    double TotalDistanceKms ;
+    double TotalDeductableDistanceKms;
     
     public LogBook()
     {
         logBook = new ArrayList();
+        TotalDistanceKms = 0.0;
+        TotalDeductableDistanceKms = 0.0;
     }
     
     public boolean AddLogRecord(DayRoute dr , DateTime dt)
@@ -78,7 +81,12 @@ public class LogBook {
         for(LogRecord lr : logBook)
         {
             lr.print();
+            TotalDistanceKms += lr.GetDistance();
+            TotalDeductableDistanceKms += lr.GetDeductableDistance();
         }
+        
+        System.out.println("Total Distance in Log : " + TotalDistanceKms);
+        System.out.println("Total Distance Deductable in Log : " + TotalDeductableDistanceKms);
     }
     
 }

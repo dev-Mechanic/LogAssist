@@ -50,4 +50,19 @@ public class LogRecord {
         System.out.println();
     }
     
+    public double GetDistance(){
+        if(dayRoute != null)
+        {   return dayRoute.GetDistance(); }
+        else
+        {   return 0.0; }
+    }
+    
+    public double GetDeductableDistance(){
+        if(dayRoute != null)
+        {   return dayRoute.GetDeductableDistance(); }
+        else
+        {   return 0.0; }
+    }
+
+    
 }
