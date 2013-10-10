@@ -16,6 +16,8 @@ public class DayRoute {
     ArrayList <Route> routesForDay;
     private int FreqType;
     private int FreqLimit;
+    private double TotalDistanceKms;
+    private double TotalDeductableKms;
     
     public DayRoute()
     {
@@ -43,6 +45,9 @@ public class DayRoute {
     }
 
     public void print() {
+        
+        System.out.print("[ Total Distance = " + TotalDistanceKms + " : Deductable = " + TotalDeductableKms + " ]\t");
+        
         for(Route dr : routesForDay)
         {
            System.out.print("\t" + dr.GetFrom());
@@ -77,6 +82,28 @@ public class DayRoute {
     public int GetFrequencyType() {
         return FreqType;
     }
+
+    void UpdateDistance() {
+        TotalDistanceKms = 0.0;
+        TotalDeductableKms= 0.0;
+       
+        for(Route r : routesForDay)
+        {
+            r.UpdateDistance();
+            TotalDistanceKms += r.GetDistance();
+            TotalDeductableKms += r.GetDeductableDistance();
+        }
+     
+    }
+    
+     public double GetDistance() {
+       return TotalDistanceKms;
+    }
+    
+    public double GetDeductableDistance() {
+       return  TotalDeductableKms;
+    }
+
 
     
     

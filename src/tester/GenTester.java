@@ -7,6 +7,7 @@ package tester;
 import entity.Destination;
 import entity.RouteRepository;
 import java.util.ArrayList;
+import limitingrules.UserLimitations;
 import logbook.LogGenerator;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -27,36 +28,29 @@ public class GenTester {
         ArrayList <Destination>HomeAddresses = new ArrayList();
         
         
-//        Destination home = new Destination("80 Balcombe Road Mentone VIC 3194",false);
-//        Destination workHQ = new Destination("35 Koornang Road Scoresby VIC 3179",false);
-//        
-//        HomeAddresses.add(new Destination("Monash University Caulfield VIC 3145",false));
-//        HomeAddresses.add(new Destination("5 Warley Road Malvern East VIC 3145",false));
-//        
-//        WorkAddresses.add(new Destination("800 Stud Road Scoresby VIC 3179",false));
-//        WorkAddresses.add(new Destination("9 Helen Kob Drive Braeside VIC 3195",false));
-//        
-//        WorkAddresses.add(new Destination("47 Robinson St,Dandenong VIC 3175",true));
+        Destination home = new Destination("80 Balcombe Road Mentone VIC 3194",false,true,false);
+        Destination workHQ = new Destination("35 Koornang Road Scoresby VIC 3179",false,false,true);
+        
+//        HomeAddresses.add(new Destination("Monash University Caulfield VIC 3145",false,true,false));
+//        HomeAddresses.add(new Destination("5 Warley Road Malvern East VIC 3145",false,true,false));
+        
+        WorkAddresses.add(new Destination("800 Stud Road Scoresby VIC 3179",false,false,true));
+        WorkAddresses.add(new Destination("9 Helen Kob Drive Braeside VIC 3195",false,false,true));
+        
+        WorkAddresses.add(new Destination("47 Robinson St,Dandenong VIC 3175",true,false,false));
         
         
         
-        Destination home = new Destination("80",false);
-        Destination workHQ = new Destination("35",false);
-        
-        //HomeAddresses.add(new Destination("Monash",false));
-        //HomeAddresses.add(new Destination("5",false));
-        
-        WorkAddresses.add(new Destination("800",false));
-        WorkAddresses.add(new Destination("9",false));
-        WorkAddresses.add(new Destination("47",true));
+      
         
         
         UserInput ui = new UserInput(home,workHQ,WorkAddresses,HomeAddresses,true);
         
         RouteRepository repo = ui.DistinctRoutes(50);
-        repo.print();
-        
+        //repo.print();
+        repo.UpdateRouteDistances();
         System.out.println("Net Distinct Routes : " + repo.GetSize());
+        
         
         repo.AllocateRandomFrequencies();
         
@@ -64,7 +58,9 @@ public class GenTester {
         DateTime startOn = dstrFmt.parseDateTime("1-Oct-2013");
         DateTime endOn = dstrFmt.parseDateTime("31-Oct-2013");
         
-        LogGenerator lg = new LogGenerator(repo, startOn,endOn);
+        UserLimitations ul = new UserLimitations(false);
+        
+        LogGenerator lg = new LogGenerator(repo, startOn,endOn,ul);
         lg.Allocate();
         
         

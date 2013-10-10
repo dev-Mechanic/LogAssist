@@ -37,30 +37,39 @@ public class LogBook {
     }
 
     private boolean IsValid(DayRoute dr,DateTime dt) {
-        
-        int ftype = dr.GetFrequencyType();
-        int flimit = dr.GetFrequencyLimit();
-        
-        int DateWindow = FrequencyType.GetMaxAllowed(ftype);
-        
-        DateTime endWindow = dt;
-        DateTime startWindow = endWindow.minusDays(DateWindow);
-        
-        int countOfLogRecord = 0;
-        
-        for(LogRecord l : logBook)
+        if(dr != null)
         {
-            if(l.GetDate().isAfter(startWindow) && l.GetDate().isBefore(endWindow) && l.GetCode() == dr.GetRouteCode().hashCode())
+            int ftype = dr.GetFrequencyType();
+            int flimit = dr.GetFrequencyLimit();
+
+            int DateWindow = FrequencyType.GetMaxAllowed(ftype);
+
+            DateTime endWindow = dt;
+            DateTime startWindow = endWindow.minusDays(DateWindow);
+
+            int countOfLogRecord = 0;
+
+            for(LogRecord l : logBook)
             {
-                countOfLogRecord++;
+                
+                    if(l.GetDate().isAfter(startWindow) && l.GetDate().isBefore(endWindow) && l.GetCode() == dr.GetRouteCode().hashCode())
+                    {
+                        countOfLogRecord++;
+                    }
+                
+            }
+
+            if(countOfLogRecord < flimit) {
+                return true;
+            }
+            else {
+                return false;
             }
         }
-        
-        if(countOfLogRecord < flimit) {
+        else
+        {
+            
             return true;
-        }
-        else {
-            return false;
         }
     }
     

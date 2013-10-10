@@ -26,7 +26,7 @@ import org.codehaus.jettison.json.JSONObject;
  *
  * @author harryp
  */
-public class MapQuestService {
+public final class MapQuestService {
 
     /**
      * @param args the command line arguments
@@ -52,7 +52,10 @@ public class MapQuestService {
     
     
     
-    
+    public static double GetDistance(String from,String to)
+    {
+        return GetRoute(from,to).GetDistance();
+    }
     private static Route GetRoute(String from, String to)
     {
         try

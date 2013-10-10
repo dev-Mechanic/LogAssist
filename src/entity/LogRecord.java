@@ -36,12 +36,17 @@ public class LogRecord {
     }
     
     public int GetCode() {
-        return dayRoute.GetRouteCode().hashCode();
+        if(dayRoute != null)
+        {   return dayRoute.GetRouteCode().hashCode(); }
+        else {
+            return 0;
+        }
     }
 
     public void print() {
-        System.out.print("Date : " + day.toString(DateTimeFormat.forPattern("dd-MMM-yyyy")));
-        dayRoute.print();
+        System.out.print(day.toString(DateTimeFormat.forPattern("dd-MMM-yyyy")) + "\t");
+        if(dayRoute != null)
+        { dayRoute.print(); }
         System.out.println();
     }
     

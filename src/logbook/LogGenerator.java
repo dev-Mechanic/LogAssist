@@ -6,6 +6,7 @@ package logbook;
 
 import entity.RouteRepository;
 import java.util.Random;
+import limitingrules.UserLimitations;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
@@ -19,14 +20,15 @@ public class LogGenerator {
     LogBook myBook;
     DateTime startDate;
     DateTime endDate;
+    UserLimitations diaryLimiter;
     
-    
-    public LogGenerator(RouteRepository rep,DateTime sd, DateTime ed)
+    public LogGenerator(RouteRepository rep,DateTime sd, DateTime ed,UserLimitations dl)
     {
         distinctRepo = rep;
         myBook = new LogBook();
         startDate = sd;
         endDate = ed;
+        diaryLimiter = dl;
     }
     
     
@@ -34,16 +36,28 @@ public class LogGenerator {
     {
         int records = Days.daysBetween(startDate, endDate).getDays();
         Random routePicker = new Random();
+        DateTime temp;
         
         for(int r=0;r<records;)
         {
-            if(myBook.AddLogRecord(distinctRepo.GetRoute(   routePicker.nextInt(
-                                                                        Integer.parseInt(distinctRepo.GetSize())
-                                                                                )
-                                                        ),startDate.plusDays(r)))
+            temp = startDate.plusDays(r);
+            
+            if(diaryLimiter.IsDayAvailable(temp))
             {
-               r++; 
+            
+                if(myBook.AddLogRecord(distinctRepo.GetRoute(   routePicker.nextInt(
+                                                                            Integer.parseInt(distinctRepo.GetSize())
+                                                                                    )
+                                                            ),temp))
+                {
+                   r++; 
+                }
             }
+            else {
+                myBook.AddLogRecord(null, temp);
+                r++;
+            }
+            
         }
         
         

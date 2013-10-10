@@ -15,6 +15,8 @@ public class RouteRepository {
     
     ArrayList<DayRoute> dayRouteList;
     ArrayList<Integer> routeListCache;
+    private double TotalDistanceKms;
+    private double TotalDeductableKms;
     
     public RouteRepository()
     {
@@ -66,6 +68,20 @@ public class RouteRepository {
 
     public DayRoute GetRoute(int ix) {
         return dayRouteList.get(ix);
+    }
+    
+    
+    public void UpdateRouteDistances()
+    {   
+        TotalDistanceKms = 0.0;
+        TotalDeductableKms= 0.0;
+        
+        for(DayRoute dr : dayRouteList)
+        {
+            dr.UpdateDistance();
+            TotalDistanceKms += dr.GetDistance();
+            TotalDeductableKms += dr.GetDeductableDistance();
+        }
     }
     
 }

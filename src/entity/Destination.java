@@ -15,7 +15,8 @@ public class Destination {
         Double longitude;
         
         boolean isClient;
-        
+        boolean isHome;
+        boolean isWork;
         
         public Destination(String add,Double lat,Double lng)
         {
@@ -25,16 +26,23 @@ public class Destination {
             
         }
         
-        public Destination(String add,boolean isCl)
+        public Destination(String add,boolean isCl,boolean isHm,boolean isWk)
         {
             address = add;
             isClient = isCl;
+            isHome = isHm;
+            isWork = isWk;
         }
         
         
         public boolean IsClient()
         {
             return isClient;
+        }
+        
+        public boolean IsWork()
+        {
+            return isWork;
         }
         
        
