@@ -38,6 +38,9 @@ public class LogBook {
             return false;
         }
     }
+    
+    
+    
 
     private boolean IsValid(DayRoute dr,DateTime dt) {
         if(dr != null)
@@ -87,6 +90,18 @@ public class LogBook {
         
         System.out.println("Total Distance in Log : " + TotalDistanceKms);
         System.out.println("Total Distance Deductable in Log : " + TotalDeductableDistanceKms);
+    }
+
+    void PreFil(ArrayList<LogRecord> GetPreFil) {
+        for(LogRecord l : GetPreFil)
+        {
+            logBook.add(l);
+        }
+    }
+    
+    public ArrayList<LogRecord> GetBook()
+    {
+        return logBook;
     }
     
 }

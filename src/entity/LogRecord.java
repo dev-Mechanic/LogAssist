@@ -50,6 +50,14 @@ public class LogRecord {
         System.out.println();
     }
     
+    public String GetTrip()
+    {
+        if(dayRoute != null)
+        {   return dayRoute.GetTrip(); }
+        else
+        {   return ""; }
+    }
+    
     public double GetDistance(){
         if(dayRoute != null)
         {   return dayRoute.GetDistance(); }

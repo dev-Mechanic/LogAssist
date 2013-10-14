@@ -35,7 +35,7 @@ public class GenTester {
 //        HomeAddresses.add(new Destination("5 Warley Road Malvern East VIC 3145",false,true,false));
         
         WorkAddresses.add(new Destination("800 Stud Road Scoresby VIC 3179",false,false,true));
-        WorkAddresses.add(new Destination("9 Helen Kob Drive Braeside VIC 3195",false,false,true));
+        //WorkAddresses.add(new Destination("9 Helen Kob Drive Braeside VIC 3195",false,false,true));
         
         WorkAddresses.add(new Destination("47 Robinson St,Dandenong VIC 3175",true,false,false));
         
@@ -47,8 +47,9 @@ public class GenTester {
         UserInput ui = new UserInput(home,workHQ,WorkAddresses,HomeAddresses,true);
         
         RouteRepository repo = ui.DistinctRoutes(50);
-        //repo.print();
+        
         repo.UpdateRouteDistances();
+        repo.print();
         System.out.println("Net Distinct Routes : " + repo.GetSize());
         
         

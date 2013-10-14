@@ -56,6 +56,31 @@ public class DayRoute {
         System.out.println("\t" + routesForDay.get(routesForDay.size()-1).GetTo());
     }
     
+    
+    public String GetTrip() {
+        
+        StringBuilder response  = new StringBuilder();
+        
+        
+        
+        for(Route dr : routesForDay)
+        {
+           response.append(dr.GetFrom().substring(0, 7));
+           response.append("...");
+        }
+        
+        response.append(routesForDay.get(routesForDay.size()-1).GetTo().substring(0, 7));
+        response.append("...");
+        
+        response.append("[ TD = " + Math.round(TotalDistanceKms) + " : DeD = " + Math.round(TotalDeductableKms) + " ]");
+        
+        
+        return response.toString();
+    }
+    
+    
+    
+    
     public void setFrequencyType(int fType)
     {
        if(fType == FrequencyType.Weekly)

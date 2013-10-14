@@ -58,4 +58,22 @@ public final class FrequencyType {
         
         return WeeklyMax;
     }
+    
+    public static String GetCode(int fType)
+    {
+        if(fType == Weekly)
+        {
+            return "Weekly";
+        }
+        else if(fType == Monthly)
+        {
+            return "Monthly";
+        }
+        else if(fType == Yearly)
+        {
+            return "Yearly";
+        }
+        
+        return "";
+    }
 }

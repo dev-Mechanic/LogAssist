@@ -83,5 +83,9 @@ public class RouteRepository {
             TotalDeductableKms += dr.GetDeductableDistance();
         }
     }
+
+    public Iterable<DayRoute> GetRepo() {
+        return dayRouteList;
+    }
     
 }

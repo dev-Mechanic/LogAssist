@@ -21,6 +21,7 @@ public class Route {
                 fromLocation = from;
                 toLocation = to;
                 distanceKMs = dist;
+                deductableKMs = 0.0;
             }
             
             
@@ -39,20 +40,20 @@ public class Route {
 
     void UpdateDistance() {
         distanceKMs = MapQuestService.GetDistance(fromLocation.GetAddress(), toLocation.GetAddress());
+        deductableKMs = 0.0;
         
         if(fromLocation.IsClient() || toLocation.IsClient())
         {
             deductableKMs = distanceKMs;
         }
-        
-        if( fromLocation.IsWork() && toLocation.IsWork())
+        else if( fromLocation.IsWork() && toLocation.IsWork())
         {
             deductableKMs = distanceKMs;
         }
-        else
-        {
-            deductableKMs = 0.0;
-        }
+//        else
+//        {
+//            deductableKMs = 0.0;
+//        }
         
         
     }

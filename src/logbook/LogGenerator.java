@@ -4,7 +4,9 @@
  */
 package logbook;
 
+import entity.LogRecord;
 import entity.RouteRepository;
+import java.util.ArrayList;
 import java.util.Random;
 import limitingrules.UserLimitations;
 import org.joda.time.DateTime;
@@ -38,9 +40,12 @@ public class LogGenerator {
         Random routePicker = new Random();
         DateTime temp;
         
+        myBook.PreFil(diaryLimiter.GetPreFil());
+        
         for(int r=0;r<records;)
         {
             temp = startDate.plusDays(r);
+            
             
             if(diaryLimiter.IsDayAvailable(temp))
             {
@@ -54,7 +59,11 @@ public class LogGenerator {
                 }
             }
             else {
-                myBook.AddLogRecord(null, temp);
+                if(!diaryLimiter.IsAllocated(temp))
+                {
+                    myBook.AddLogRecord(null, temp);
+                    
+                }
                 r++;
             }
             
@@ -65,6 +74,11 @@ public class LogGenerator {
         
     }
     
+    
+    public ArrayList<LogRecord> GetRecords()
+    {
+        return myBook.GetBook();
+    }
     
     
     
