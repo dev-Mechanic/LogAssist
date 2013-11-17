@@ -9,6 +9,7 @@ import entity.Destination;
 import entity.Route;
 import entity.RouteRepository;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import limitingrules.UserLimitations;
 
@@ -115,6 +116,151 @@ public class UserInput {
         return distinctRoutes;
         
         
+    }
+    
+    public RouteRepository ProfileRouteRepository(RouteRepository repo,int groupCount)
+    {
+        ArrayList<DayRoute> repoList = new ArrayList<DayRoute>();
+        ArrayList<ArrayList<DayRoute>> groupStore;
+        RouteRepository repoReturn = new RouteRepository();
+        int itemsPerGroup = Math.round(repo.GetSize()/groupCount);
+        
+        System.out.println(" Group Size : " + itemsPerGroup + " : " + repo.GetSize()/groupCount);
+        
+        
+        groupStore = GetGroup(repo.GetRouteList(),itemsPerGroup,groupCount,"DIST");
+        
+        for(ArrayList<DayRoute> dGrp : groupStore)
+        {
+            //System.out.println("Group " + groupStore.indexOf(dGrp) + " ---------------------------------------------------");
+            for(DayRoute dr : dGrp )
+            {
+                
+                dr.SetDistGroupIndex(groupStore.indexOf(dGrp));
+                //dr.print();
+                repoList.add(dr);
+            }
+        }
+        
+        groupStore = GetGroup(repoList,itemsPerGroup,groupCount,"HOPS");
+        repoList.clear();
+        
+        for(ArrayList<DayRoute> dGrp : groupStore)
+        {
+            //System.out.println("Group " + groupStore.indexOf(dGrp) + " ---------------------------------------------------");
+            for(DayRoute dr : dGrp )
+            {
+                
+                dr.SetHopGroupIndex(groupStore.indexOf(dGrp));
+                //dr.print();
+                repoList.add(dr);
+            }
+        }
+        
+        
+        groupStore = GetGroup(repoList,itemsPerGroup,groupCount,"DISTHOPS");
+        repoList.clear();
+        
+        for(ArrayList<DayRoute> dGrp : groupStore)
+        {
+            System.out.println("Group " + groupStore.indexOf(dGrp) + " ---------------------------------------------------");
+            for(DayRoute dr : dGrp )
+            {
+                
+                dr.SetGroupIndex(groupStore.indexOf(dGrp));
+                dr.print();
+                //repoList.add(dr);
+                repoReturn.AddRoute(dr);
+            }
+        }
+        
+        return repoReturn;
+    }
+    
+    
+    public ArrayList<ArrayList<DayRoute>> GetGroup(ArrayList<DayRoute> clone, int itemsInGroup,int GroupCount,String mode)
+    {
+        ArrayList<DayRoute> tempGroup;
+        ArrayList<ArrayList<DayRoute>> GroupHolder = new ArrayList();
+        int groupIndex = 1;
+        DayRoute tempHolder;
+        double leftRatio = 0.0,rightRatio = 0.0;
+        
+        do
+        {
+            tempGroup = new ArrayList() ;
+            int swapCount = 0;
+            int groupSize = 0;
+            
+            if(clone.size()>= itemsInGroup && groupIndex < GroupCount)
+            {
+                groupSize = itemsInGroup;
+            }
+            else
+            {
+                groupSize = clone.size();
+            }
+        
+            for(DayRoute dr : clone.subList(0, groupSize))
+            {
+                tempGroup.add(dr);
+            }
+            clone.removeAll(tempGroup);
+            
+            //System.out.println(" TEMP Size : " + tempGroup.size() + " : Clone Size -" + clone.size());
+            
+            
+            
+            do
+            {
+                swapCount = 0;
+
+                for(DayRoute dr : tempGroup)
+                {
+                    for(DayRoute dm : clone)
+                    {
+                        if(mode.equals("DIST"))
+                        {
+                            leftRatio = dr.GetDistRatio();
+                            rightRatio = dm.GetDistRatio();
+                        }
+                        else if(mode.equals("HOPS"))
+                        {
+                            leftRatio = dr.GetHopRatio();
+                            rightRatio = dm.GetHopRatio();
+                        }
+                        else if(mode.equals("DISTHOPS"))
+                        {
+                            leftRatio = dr.GetDistRatio()*dr.GetHopRatio();
+                            rightRatio = dm.GetDistRatio()*dm.GetHopRatio();
+                        }
+                        
+                        if(leftRatio>rightRatio)
+                        {
+                            //swap items
+                            //System.out.println("Swap Items : " + tempGroup.indexOf(dr) + " : " + clone.indexOf(dm));
+                            tempHolder = dr;
+                            tempGroup.set(tempGroup.indexOf(dr), dm);
+                            clone.set(clone.indexOf(dm), tempHolder);
+                            swapCount ++;
+                            break;
+                        }
+                        
+                        
+                    }
+                }
+                
+                //System.out.println("Swap Count : " + swapCount);
+               
+            }while(swapCount != 0);
+        
+            GroupHolder.add(tempGroup);
+            groupIndex ++;
+            
+        }while(groupIndex <= GroupCount);
+        
+        
+        return GroupHolder;
     }
     
     

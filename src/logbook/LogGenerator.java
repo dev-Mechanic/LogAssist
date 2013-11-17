@@ -23,14 +23,16 @@ public class LogGenerator {
     DateTime startDate;
     DateTime endDate;
     UserLimitations diaryLimiter;
+    String ProbableMode;
     
-    public LogGenerator(RouteRepository rep,DateTime sd, DateTime ed,UserLimitations dl)
+    public LogGenerator(RouteRepository rep,DateTime sd, DateTime ed,UserLimitations dl,String pmode)
     {
         distinctRepo = rep;
         myBook = new LogBook();
         startDate = sd;
         endDate = ed;
         diaryLimiter = dl;
+        ProbableMode = pmode;
     }
     
     
@@ -49,14 +51,26 @@ public class LogGenerator {
             
             if(diaryLimiter.IsDayAvailable(temp))
             {
+                
+                //Frequency Based Allocation
             
-                if(myBook.AddLogRecord(distinctRepo.GetRoute(   routePicker.nextInt(
-                                                                            Integer.parseInt(distinctRepo.GetSize())
-                                                                                    )
-                                                            ),temp))
+//                if(myBook.AddLogRecord(distinctRepo.GetRoute(   routePicker.nextInt(
+//                                                                            distinctRepo.GetSize()
+//                                                                                    )
+//                                                            ),temp))
+//                {
+//                   r++; 
+//                }
+                
+                
+                // Probabilistic Based Allocation
+                if(myBook.AddLogRecord(distinctRepo.GetProbableRoute(ProbableMode),temp,true))
                 {
                    r++; 
                 }
+                
+                
+                
             }
             else {
                 if(!diaryLimiter.IsAllocated(temp))

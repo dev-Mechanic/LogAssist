@@ -39,6 +39,12 @@ public class LogBook {
         }
     }
     
+    public boolean AddLogRecord(DayRoute dr , DateTime dt,boolean Override)
+    {
+        logBook.add(new LogRecord(dr,dt));
+        return true;
+    }
+    
     
     
 

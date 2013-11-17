@@ -18,6 +18,11 @@ public class DayRoute {
     private int FreqLimit;
     private double TotalDistanceKms;
     private double TotalDeductableKms;
+    private double DistanceComplexityRatio;
+    private double HopsComplexityRatio;
+    private int DistGroupIndex;
+    private int HopsGroupIndex;
+    private int GroupIndex;
     
     public DayRoute()
     {
@@ -46,7 +51,7 @@ public class DayRoute {
 
     public void print() {
         
-        System.out.print("[ Total Distance = " + TotalDistanceKms + " : Deductable = " + TotalDeductableKms + " ]\t");
+        System.out.print(DistGroupIndex + "\t" + HopsGroupIndex + "\t" + GroupIndex + "\t[ Total Distance = " + TotalDistanceKms + " : Deductable = " + TotalDeductableKms + " ]\t"+TotalDistanceKms+"\t"+DistanceComplexityRatio+"\t"+HopsComplexityRatio+"\t");
         
         for(Route dr : routesForDay)
         {
@@ -107,7 +112,40 @@ public class DayRoute {
     public int GetFrequencyType() {
         return FreqType;
     }
-
+    
+    
+    public void SetDistGroupIndex(int n)
+    {
+        DistGroupIndex = n;
+    }
+    
+    public void SetHopGroupIndex(int n)
+    {
+        HopsGroupIndex = n;
+    }
+    
+    public void SetGroupIndex(int n)
+    {
+        GroupIndex = n;
+    }
+    
+    
+    public int GetDistGroupIndex()
+    {
+        return DistGroupIndex;
+    }
+    
+    public int GetHopGroupIndex()
+    {
+        return HopsGroupIndex;
+    }
+    
+    public int GetGroupIndex()
+    {
+        return GroupIndex;
+    }
+    
+    
     void UpdateDistance() {
         TotalDistanceKms = 0.0;
         TotalDeductableKms= 0.0;
@@ -129,8 +167,28 @@ public class DayRoute {
        return  TotalDeductableKms;
     }
 
-
+    public int GetHopsInRoute()
+    {
+        return this.routesForDay.size();
+    }
     
     
+    public void SetRatio(double maxDistance,int maxHops)
+    {
+        DistanceComplexityRatio = TotalDistanceKms/maxDistance;
+//        System.out.println("CR : " + GetHopsInRoute() + " : " + maxHops);
+        HopsComplexityRatio = (double)GetHopsInRoute()/(double)maxHops;
+    }
     
+    
+    public double GetDistRatio()
+    {
+        return DistanceComplexityRatio;
+    }
+    
+    
+    public double GetHopRatio()
+    {
+        return HopsComplexityRatio;
+    }
 }

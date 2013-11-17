@@ -92,6 +92,8 @@ public final class MapQuestService {
     
     public static double GetDistance(String from,String to)
     {
+        //System.out.println("Route : " + from + " : " + to);
+        
         return GetRoute(from,to).GetDistance();
     }
     private static Route GetRoute(String from, String to)
@@ -99,7 +101,7 @@ public final class MapQuestService {
         try
         {
             Route currentRoute;
-             
+             //System.out.println("Route : " + RouteCache.size());
             if(RouteCache.contains(from.hashCode()+"-"+to.hashCode()))
             {
                 currentRoute = LocalRouteDistanceRepo.get(RouteCache.indexOf(from.hashCode()+"-"+to.hashCode()));
@@ -108,6 +110,7 @@ public final class MapQuestService {
             else
             {
                 String jsonResponse = APICall(from,to);
+                //System.out.println("--"+jsonResponse);
                 JSONObject jsonObj = new JSONObject(jsonResponse);
                 JSONArray routeLocations = new JSONArray((jsonObj.getJSONObject("route")).getString("locations"));
                 double distance = (jsonObj.getJSONObject("route")).getDouble("distance");

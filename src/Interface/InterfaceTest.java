@@ -386,7 +386,7 @@ public class InterfaceTest extends javax.swing.JFrame {
         Object [][] tableData ;
         String [] columnData = {"Trip#","Trip Desc.","Frequency Type","Frequency"};
         int count = 0;
-        int totalRecords = Integer.parseInt(repo.GetSize());
+        int totalRecords = repo.GetSize();
         tableData =  new Object[totalRecords][4];
         
         
@@ -435,7 +435,7 @@ public class InterfaceTest extends javax.swing.JFrame {
         DateTime endOn = dstrFmt.parseDateTime(this.jTextField4.getText());
         
         
-        LogGenerator lg = new LogGenerator(repo, startOn,endOn,restr);
+        LogGenerator lg = new LogGenerator(repo, startOn,endOn,restr,"DISTHOPS");
         lg.Allocate();
         
         ArrayList<LogRecord> result = lg.GetRecords();
