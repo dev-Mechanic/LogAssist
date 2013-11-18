@@ -4,6 +4,7 @@
  */
 package tester;
 
+import DataExport.ExportToExcel;
 import entity.Destination;
 import entity.RouteRepository;
 import java.util.ArrayList;
@@ -74,6 +75,10 @@ public class GenTester {
         lg.Allocate();
 //        
         
+        ExportToExcel exporter = new ExportToExcel("TestExport");
+        exporter.ExportRoutes("RouteList", repo.GetRouteList());
+        exporter.ExportLogBook("LogBook", lg.GetRecords());
+        exporter.CommitWorkBook();
         
         
         

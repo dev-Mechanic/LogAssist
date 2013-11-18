@@ -4,11 +4,14 @@
  */
 package Interface;
 
+import DataExport.ExportToExcel;
 import entity.DayRoute;
 import entity.Destination;
 import entity.LogRecord;
 import entity.RouteRepository;
+import java.io.File;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -42,6 +45,7 @@ public class InterfaceTest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
@@ -56,13 +60,17 @@ public class InterfaceTest extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jCheckBox2 = new javax.swing.JCheckBox();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
         jLayeredPane3 = new javax.swing.JLayeredPane();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -70,13 +78,26 @@ public class InterfaceTest extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
         jLayeredPane4 = new javax.swing.JLayeredPane();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+
+        jFileChooser1.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
+        jFileChooser1.setApproveButtonText("Save");
+        jFileChooser1.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
+        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FolderSelected(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,7 +109,7 @@ public class InterfaceTest extends javax.swing.JFrame {
         jLayeredPane2.add(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel6.setText("Other Home Locations");
-        jLabel6.setBounds(0, 90, 141, 16);
+        jLabel6.setBounds(0, 90, 106, 14);
         jLayeredPane2.add(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTextField3.setText("80 Balcombe Road Mentone VIC 3194");
@@ -97,15 +118,15 @@ public class InterfaceTest extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
-        jTextField3.setBounds(0, 50, 250, 28);
+        jTextField3.setBounds(0, 50, 250, 30);
         jLayeredPane2.add(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel7.setText("Home Address");
-        jLabel7.setBounds(0, 30, 92, 16);
+        jLabel7.setBounds(0, 30, 69, 14);
         jLayeredPane2.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel4.setText("Work HQ Address");
-        jLabel4.setBounds(260, 30, 111, 16);
+        jLabel4.setBounds(260, 30, 85, 14);
         jLayeredPane2.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTextField2.setText("35 Koornang Road Scoresby VIC 3179");
@@ -114,11 +135,11 @@ public class InterfaceTest extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
-        jTextField2.setBounds(260, 50, 255, 28);
+        jTextField2.setBounds(260, 50, 255, 30);
         jLayeredPane2.add(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setText("Other Work Locations");
-        jLabel3.setBounds(260, 90, 141, 16);
+        jLabel3.setBounds(260, 90, 141, 14);
         jLayeredPane2.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTextArea2.setColumns(20);
@@ -130,7 +151,7 @@ public class InterfaceTest extends javax.swing.JFrame {
         jLayeredPane2.add(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel5.setText("Client Locations");
-        jLabel5.setBounds(520, 90, 141, 16);
+        jLabel5.setBounds(520, 90, 141, 14);
         jLayeredPane2.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTextArea3.setColumns(20);
@@ -141,17 +162,8 @@ public class InterfaceTest extends javax.swing.JFrame {
         jScrollPane3.setBounds(520, 110, 255, 110);
         jLayeredPane2.add(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton1.setText("Validate");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jButton1.setBounds(660, 0, 94, 29);
-        jLayeredPane2.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         jLabel2.setText("Stage 1 : User Information and Addresses");
-        jLabel2.setBounds(0, 0, 360, 16);
+        jLabel2.setBounds(0, 0, 360, 14);
         jLayeredPane2.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jCheckBox2.setText("Start At Any Work Location");
@@ -161,23 +173,23 @@ public class InterfaceTest extends javax.swing.JFrame {
         jLayeredPane1.setAutoscrolls(true);
 
         jLabel1.setText("Stage 2 : Unique Trips & Frequencies");
-        jLabel1.setBounds(0, 10, 360, 16);
+        jLabel1.setBounds(0, 10, 360, 14);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+                {null, null, null, null, null}
             },
             new String [] {
-                "Trip#", "Trip Desc.", "Frequency Type", "Frequency"
+                "Trip#", "Trip Desc.", "Distance Group", "Hops Group", "Overall Group"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -190,11 +202,52 @@ public class InterfaceTest extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jScrollPane1.setBounds(10, 30, 770, 120);
+        jScrollPane1.setBounds(10, 30, 550, 120);
         jLayeredPane1.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jButton1.setText("Validate");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.setBounds(681, 0, 100, 23);
+        jLayeredPane1.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3", "4", "5", "6" }));
+        jComboBox1.setBounds(570, 0, 110, 20);
+        jLayeredPane1.add(jComboBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel12.setText("Cluster Size");
+        jLabel12.setBounds(480, 0, 110, 20);
+        jLayeredPane1.add(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Group Index", "Percentage"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(jTable4);
+
+        jScrollPane7.setBounds(570, 30, 210, 120);
+        jLayeredPane1.add(jScrollPane7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         jLabel8.setText("Stage 3 : Diary Records & Calendar Preferences");
-        jLabel8.setBounds(0, 10, 360, 16);
+        jLabel8.setBounds(10, 20, 360, 14);
         jLayeredPane3.add(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTable2.setAutoCreateRowSorter(true);
@@ -218,7 +271,7 @@ public class InterfaceTest extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(jTable2);
 
-        jScrollPane5.setBounds(10, 40, 454, 90);
+        jScrollPane5.setBounds(20, 50, 452, 90);
         jLayeredPane3.add(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jCheckBox1.setText("Travel on Weekends");
@@ -227,36 +280,51 @@ public class InterfaceTest extends javax.swing.JFrame {
                 jCheckBox1ActionPerformed(evt);
             }
         });
-        jCheckBox1.setBounds(580, 40, 190, 23);
+        jCheckBox1.setBounds(620, 20, 140, 23);
         jLayeredPane3.add(jCheckBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel10.setText("Log End Date");
-        jLabel10.setBounds(470, 90, 150, 16);
+        jLabel10.setBounds(510, 70, 150, 20);
         jLayeredPane3.add(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel11.setText("Log Start Date");
-        jLabel11.setBounds(470, 70, 150, 16);
+        jLabel11.setBounds(510, 50, 150, 20);
         jLayeredPane3.add(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton2.setText("Generate");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jButton2.setBounds(670, 10, 99, 29);
-        jLayeredPane3.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         jTextField1.setText("1-Sep-2013");
-        jTextField1.setBounds(580, 60, 200, 28);
+        jTextField1.setBounds(620, 50, 130, 20);
         jLayeredPane3.add(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTextField4.setText("30-Sep-2013");
-        jTextField4.setBounds(580, 90, 200, 28);
+        jTextField4.setBounds(620, 70, 130, 20);
         jLayeredPane3.add(jTextField4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel13.setText("Odometer Start");
+        jLabel13.setBounds(510, 100, 100, 20);
+        jLayeredPane3.add(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+        jTextField5.setBounds(620, 100, 130, 20);
+        jLayeredPane3.add(jTextField5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel14.setText("Odometer End");
+        jLabel14.setBounds(510, 120, 99, 20);
+        jLayeredPane3.add(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+        jTextField6.setBounds(620, 120, 130, 20);
+        jLayeredPane3.add(jTextField6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         jLabel9.setText("Stage 4 : Log Book Results");
-        jLabel9.setBounds(0, 10, 360, 16);
+        jLabel9.setBounds(0, 10, 360, 14);
         jLayeredPane4.add(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTable3.setAutoCreateRowSorter(true);
@@ -291,6 +359,13 @@ public class InterfaceTest extends javax.swing.JFrame {
         jScrollPane6.setBounds(10, 30, 770, 140);
         jLayeredPane4.add(jScrollPane6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jButton2.setText("Export");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -305,7 +380,11 @@ public class InterfaceTest extends javax.swing.JFrame {
                             .add(layout.createSequentialGroup()
                                 .add(jLayeredPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 784, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .add(0, 0, Short.MAX_VALUE))
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLayeredPane3))))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLayeredPane3)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 87, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(16, 16, 16)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -314,11 +393,13 @@ public class InterfaceTest extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jLayeredPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 228, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 155, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLayeredPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 141, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 172, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jLayeredPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 153, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLayeredPane4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 176, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButton2)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -352,7 +433,7 @@ public class InterfaceTest extends javax.swing.JFrame {
         for(String h : hads)
         {
             System.out.println(" H : " + h);
-            //HomeAddresses.add(new Destination(h,false,true,false));
+            HomeAddresses.add(new Destination(h,false,true,false));
         }
         
         
@@ -381,21 +462,27 @@ public class InterfaceTest extends javax.swing.JFrame {
         System.out.println("Net Distinct Routes : " + repo.GetSize());
         
         
-        repo.AllocateRandomFrequencies();
+        //repo.AllocateRandomFrequencies();
+        repo = ui.ProfileRouteRepository(repo, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()));
+        
+        
+        
+        
         
         Object [][] tableData ;
-        String [] columnData = {"Trip#","Trip Desc.","Frequency Type","Frequency"};
+        String [] columnData = {"Trip#","Trip Desc.","Distance Group","Hop Group","Overall Group"};
         int count = 0;
         int totalRecords = repo.GetSize();
-        tableData =  new Object[totalRecords][4];
+        tableData =  new Object[totalRecords][5];
         
         
         for(DayRoute dr : repo.GetRepo())
         {
             tableData[count][0] = count + 1;
             tableData[count][1] = dr.GetTrip();
-            tableData[count][2] = FrequencyType.GetCode(dr.GetFrequencyType());
-            tableData[count][3] = dr.GetFrequencyLimit();
+            tableData[count][2] = dr.GetDistGroupIndex();
+            tableData[count][3] = dr.GetHopGroupIndex();
+            tableData[count][4] = dr.GetGroupIndex();
             
             count++;
         }
@@ -403,6 +490,22 @@ public class InterfaceTest extends javax.swing.JFrame {
          this.jTable1.setModel(new DefaultTableModel(tableData,columnData));
          this.jTable1.repaint();
         
+         
+        Object [][] LoadData ;
+        String [] columnLoads = {"Group Index","Group Load"};
+        int Loadcount = 0;
+        int LoadtotalRecords = Integer.parseInt(this.jComboBox1.getSelectedItem().toString());
+        LoadData =  new Object[LoadtotalRecords][2];
+        
+        for(int i=0;i<LoadtotalRecords;i++)
+        {
+            LoadData[i][0] = i; 
+        }
+        
+        this.jTable4.setModel(new DefaultTableModel(LoadData,columnLoads));
+        this.jTable4.repaint();
+         
+         
         System.out.println("Done !");
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -413,6 +516,19 @@ public class InterfaceTest extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+        
+        
+        ArrayList<Double> loadingList = new ArrayList();
+        double RegionValue = 0.0;
+        for(int i=0;i<this.jTable4.getModel().getRowCount();i++)
+        {
+            RegionValue += Double.parseDouble(this.jTable4.getModel().getValueAt(i, 1).toString());
+            loadingList.add(RegionValue);
+        }
+        
+        repo.SetGroupLoading(loadingList);
+        
         
         
         UserLimitations restr = new UserLimitations(this.jCheckBox1.isSelected());
@@ -435,7 +551,7 @@ public class InterfaceTest extends javax.swing.JFrame {
         DateTime endOn = dstrFmt.parseDateTime(this.jTextField4.getText());
         
         
-        LogGenerator lg = new LogGenerator(repo, startOn,endOn,restr,"DISTHOPS");
+        lg = new LogGenerator(repo, startOn,endOn,restr,"DISTHOPS");
         lg.Allocate();
         
         ArrayList<LogRecord> result = lg.GetRecords();
@@ -463,7 +579,35 @@ public class InterfaceTest extends javax.swing.JFrame {
         System.out.println("Done !");
         
         
+        this.jFileChooser1.showSaveDialog(this);
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void FolderSelected(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FolderSelected
+        // TODO add your handling code here:
+        
+        System.out.println(" Source : " + evt.getSource() + "  :  " + evt.getSource().toString()+ ":" + evt.getActionCommand());
+        File f = this.jFileChooser1.getSelectedFile();
+        
+            if(f.isDirectory())
+            {
+                System.out.println("Call Exporter");
+                ExportToExcel exporter = new ExportToExcel(f.getPath() + "\\LogBookExport");
+                exporter.ExportRoutes("RouteList", repo.GetRouteList());
+                exporter.ExportLogBook("LogBook", lg.GetRecords());
+                exporter.CommitWorkBook();
+            }
+        
+    }//GEN-LAST:event_FolderSelected
 
     /**
      * @param args the command line arguments
@@ -504,9 +648,14 @@ public class InterfaceTest extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -525,9 +674,11 @@ public class InterfaceTest extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
@@ -535,9 +686,12 @@ public class InterfaceTest extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 
     private UserInput ui;
     private RouteRepository repo;
+    private LogGenerator lg;
     
 }

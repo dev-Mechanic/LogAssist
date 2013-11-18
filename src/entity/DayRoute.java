@@ -62,6 +62,32 @@ public class DayRoute {
     }
     
     
+    public ArrayList GetTripItems() {
+        
+        ArrayList returnSet = new ArrayList();
+        
+        returnSet.add(DistGroupIndex);
+        returnSet.add(HopsGroupIndex);
+        returnSet.add(GroupIndex);
+        returnSet.add(TotalDistanceKms);
+        returnSet.add(TotalDeductableKms);
+        returnSet.add(DistanceComplexityRatio);
+        returnSet.add(HopsComplexityRatio);
+        
+        for(Route dr : routesForDay)
+        {
+           returnSet.add(dr.GetFrom());
+        }
+        
+        returnSet.add(routesForDay.get(routesForDay.size()-1).GetTo());
+        
+        return returnSet;
+    }
+    
+    
+   
+    
+    
     public String GetTrip() {
         
         StringBuilder response  = new StringBuilder();

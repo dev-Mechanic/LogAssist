@@ -4,6 +4,7 @@
  */
 package entity;
 
+import java.util.ArrayList;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
@@ -49,6 +50,26 @@ public class LogRecord {
         { dayRoute.print(); }
         System.out.println();
     }
+    
+    
+    public ArrayList GetLogItems() {
+        
+        ArrayList retList;
+        
+        if(dayRoute != null)
+        { retList = dayRoute.GetTripItems(); }
+        else
+        {
+            retList = new ArrayList();
+        }
+        
+        retList.add(0,day.toString(DateTimeFormat.forPattern("dd-MMM-yyyy")));
+        
+        return retList;
+    }
+    
+    
+    
     
     public String GetTrip()
     {
