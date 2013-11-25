@@ -46,6 +46,13 @@ public class LogBook {
     }
     
     
+    public boolean AddLogRecord(LogRecord lr)
+    {
+        logBook.add(lr);
+        return true;
+    }
+    
+    
     
 
     private boolean IsValid(DayRoute dr,DateTime dt) {

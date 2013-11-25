@@ -16,12 +16,18 @@ public class LogRecord {
     
     DayRoute dayRoute;
     DateTime day;
-    
+    double personalTravel;
     
     public LogRecord(DayRoute dr,DateTime d)
     {
         dayRoute = dr;
         day = d;
+        personalTravel = 0.0;
+    }
+    
+    public void SetPersonalTravel(double d)
+    {
+        personalTravel = d;
     }
 
 //    public int GetFreqLimit() {
@@ -59,11 +65,9 @@ public class LogRecord {
         if(dayRoute != null)
         { retList = dayRoute.GetTripItems(); }
         else
-        {
-            retList = new ArrayList();
-        }
+        { retList = new ArrayList();        }
         
-        retList.add(0,day.toString(DateTimeFormat.forPattern("dd-MMM-yyyy")));
+        retList.add(0,personalTravel);
         
         return retList;
     }
@@ -91,6 +95,10 @@ public class LogRecord {
         {   return dayRoute.GetDeductableDistance(); }
         else
         {   return 0.0; }
+    }
+
+    public double GetPersonalTravel() {
+        return personalTravel;
     }
 
     

@@ -25,6 +25,7 @@ public class LogGenerator {
     UserLimitations diaryLimiter;
     String ProbableMode;
     
+    
     public LogGenerator(RouteRepository rep,DateTime sd, DateTime ed,UserLimitations dl,String pmode)
     {
         distinctRepo = rep;
@@ -42,7 +43,7 @@ public class LogGenerator {
         Random routePicker = new Random();
         DateTime temp;
         
-        myBook.PreFil(diaryLimiter.GetPreFil());
+        //myBook.PreFil(diaryLimiter.GetPreFil());
         
         for(int r=0;r<records;)
         {
@@ -73,10 +74,14 @@ public class LogGenerator {
                 
             }
             else {
-                if(!diaryLimiter.IsAllocated(temp))
+                if(diaryLimiter.IsAllocated(temp))
+                {
+                    
+                   myBook.AddLogRecord(diaryLimiter.GetLogForDate(temp)); 
+                }
+                else
                 {
                     myBook.AddLogRecord(null, temp);
-                    
                 }
                 r++;
             }

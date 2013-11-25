@@ -66,5 +66,14 @@ public class UserLimitations {
         return false;
     }
     
+    public LogRecord GetLogForDate(DateTime dt)
+    {
+        if(DateCache.indexOf(dt)>=0)
+        {
+            return LogRecords.get(DateCache.indexOf(dt));
+        }
+        return null;
+    }
+    
     
 }

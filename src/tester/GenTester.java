@@ -66,7 +66,7 @@ public class GenTester {
 //        repo.AllocateRandomFrequencies();
 //        
         DateTimeFormatter dstrFmt = DateTimeFormat.forPattern("dd-MMM-yyyy");
-        DateTime startOn = dstrFmt.parseDateTime("1-Sep-2013");
+        DateTime startOn = dstrFmt.parseDateTime("1-Aug-2013");
         DateTime endOn = dstrFmt.parseDateTime("31-Oct-2013");
 //        
         UserLimitations ul = new UserLimitations(false);
@@ -77,7 +77,7 @@ public class GenTester {
         
         ExportToExcel exporter = new ExportToExcel("TestExport");
         exporter.ExportRoutes("RouteList", repo.GetRouteList());
-        exporter.ExportLogBook("LogBook", lg.GetRecords());
+        exporter.ExportLogBook("LogBook", lg.GetRecords(),10000,15000);
         exporter.CommitWorkBook();
         
         
