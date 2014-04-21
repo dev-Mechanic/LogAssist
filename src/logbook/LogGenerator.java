@@ -89,7 +89,7 @@ public class LogGenerator {
         }
         
         
-        myBook.print();
+        //myBook.print();
         
     }
     

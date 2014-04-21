@@ -94,7 +94,7 @@ public class RouteRepository {
         int grpIndex = 0,leftVal=0;
         ArrayList<DayRoute> groupSet = new ArrayList();
         Random routePicker = new Random();
-        System.out.println(" Random Sel : " + groupSel);
+        //System.out.println(" Random Sel : " + groupSel);
         for(Double groupFactor : GroupLoading)
         {
             if(groupSel <= groupFactor)

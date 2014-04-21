@@ -57,8 +57,8 @@ public class GenTester {
         
         
         ArrayList<Double> loadingList = new ArrayList();
-        loadingList.add(5.00);
-        loadingList.add(10.00);
+        loadingList.add(50.00);
+        loadingList.add(80.00);
         loadingList.add(100.00);
         
         repo.SetGroupLoading(loadingList);
@@ -81,8 +81,54 @@ public class GenTester {
         exporter.CommitWorkBook();
         
         
+        for(Double d : loadingList)
+        {
+            System.out.println(" Item at : " + loadingList.indexOf(d) + " - " + d);
+        }
+        
+        int countIncrement = 0 ;
+        ArrayList<Double> itr = loadingList;
+        boolean upd = false;
+        int setIncr = -10;
+        for(int i=0;i<10;i++)
+        {
+            upd = false;
+            for(Double d : itr)
+            {
+                if(d < 100 && upd == false && d+setIncr > 0)
+                {
+                    itr.set(itr.indexOf(d), d + setIncr);
+                    upd = true;
+                    countIncrement = itr.indexOf(d);
+                }
+                
+                if( d == 0 && upd == false)
+                {
+                    setIncr = 10;
+                }
+                
+            }
+
+            
+            
+            
+            
+            
+            
+            
+            for(Double d : itr)
+            {
+                System.out.println(" Item at : " + loadingList.indexOf(d) + " - " + d);
+            }   
+            
+        }
+        
+        
         
         
         
     }
+    
+    
+   
 }

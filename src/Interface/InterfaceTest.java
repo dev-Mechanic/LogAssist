@@ -86,6 +86,8 @@ public class InterfaceTest extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
         jLayeredPane4 = new javax.swing.JLayeredPane();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -94,6 +96,7 @@ public class InterfaceTest extends javax.swing.JFrame {
         DeductableKms = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        DeductableKms1 = new javax.swing.JLabel();
 
         jFileChooser1.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
         jFileChooser1.setApproveButtonText("Save");
@@ -111,12 +114,12 @@ public class InterfaceTest extends javax.swing.JFrame {
         jTextArea4.setText("5 Warley Road Malvern East VIC 3145");
         jScrollPane4.setViewportView(jTextArea4);
 
+        jLayeredPane2.add(jScrollPane4);
         jScrollPane4.setBounds(0, 110, 250, 110);
-        jLayeredPane2.add(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel6.setText("Other Home Locations");
-        jLabel6.setBounds(0, 90, 106, 14);
-        jLayeredPane2.add(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.add(jLabel6);
+        jLabel6.setBounds(0, 90, 126, 16);
 
         jTextField3.setText("80 Balcombe Road Mentone VIC 3194");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -124,16 +127,16 @@ public class InterfaceTest extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
+        jLayeredPane2.add(jTextField3);
         jTextField3.setBounds(0, 50, 250, 30);
-        jLayeredPane2.add(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel7.setText("Home Address");
-        jLabel7.setBounds(0, 30, 69, 14);
-        jLayeredPane2.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.add(jLabel7);
+        jLabel7.setBounds(0, 30, 83, 16);
 
         jLabel4.setText("Work HQ Address");
-        jLabel4.setBounds(260, 30, 85, 14);
-        jLayeredPane2.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.add(jLabel4);
+        jLabel4.setBounds(260, 30, 101, 16);
 
         jTextField2.setText("35 Koornang Road Scoresby VIC 3179");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -141,46 +144,46 @@ public class InterfaceTest extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
+        jLayeredPane2.add(jTextField2);
         jTextField2.setBounds(260, 50, 255, 30);
-        jLayeredPane2.add(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setText("Other Work Locations");
-        jLabel3.setBounds(260, 90, 141, 14);
-        jLayeredPane2.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.add(jLabel3);
+        jLabel3.setBounds(260, 90, 141, 16);
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        jTextArea2.setText("800 Stud Road Scoresby VIC 3179\n9 Helen Kob Drive Braeside VIC 3195");
+        jTextArea2.setText("800 Stud Road Scoresby VIC 3179\n9 Helen Kob Drive Braeside VIC 3195\n91 Elizabeth St Melbourne VIC 3000");
         jScrollPane2.setViewportView(jTextArea2);
 
+        jLayeredPane2.add(jScrollPane2);
         jScrollPane2.setBounds(260, 110, 255, 111);
-        jLayeredPane2.add(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel5.setText("Client Locations");
-        jLabel5.setBounds(520, 90, 141, 14);
-        jLayeredPane2.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.add(jLabel5);
+        jLabel5.setBounds(520, 90, 141, 16);
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
-        jTextArea3.setText("47 Robinson Street Dandenong VIC 3175");
+        jTextArea3.setText("47 Robinson Street Dandenong VIC 3175\nMonash Caulfield VIC 3145");
         jScrollPane3.setViewportView(jTextArea3);
 
-        jScrollPane3.setBounds(520, 110, 255, 110);
-        jLayeredPane2.add(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.add(jScrollPane3);
+        jScrollPane3.setBounds(530, 110, 255, 110);
 
         jLabel2.setText("Stage 1 : User Information and Addresses");
-        jLabel2.setBounds(0, 0, 360, 14);
-        jLayeredPane2.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.add(jLabel2);
+        jLabel2.setBounds(0, 0, 360, 16);
 
         jCheckBox2.setText("Start At Any Work Location");
-        jCheckBox2.setBounds(520, 50, 230, 23);
-        jLayeredPane2.add(jCheckBox2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.add(jCheckBox2);
+        jCheckBox2.setBounds(520, 50, 230, 25);
 
         jLayeredPane1.setAutoscrolls(true);
 
         jLabel1.setText("Stage 2 : Unique Trips & Frequencies");
-        jLabel1.setBounds(0, 10, 360, 14);
-        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.add(jLabel1);
+        jLabel1.setBounds(0, 10, 360, 16);
 
         jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -208,8 +211,8 @@ public class InterfaceTest extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jLayeredPane1.add(jScrollPane1);
         jScrollPane1.setBounds(10, 30, 550, 120);
-        jLayeredPane1.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jButton1.setText("Validate");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -217,17 +220,17 @@ public class InterfaceTest extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jButton1.setBounds(681, 0, 100, 23);
-        jLayeredPane1.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.add(jButton1);
+        jButton1.setBounds(681, 0, 100, 25);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3", "4", "5", "6" }));
         jComboBox1.setSelectedIndex(1);
-        jComboBox1.setBounds(330, 0, 110, 20);
-        jLayeredPane1.add(jComboBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.add(jComboBox1);
+        jComboBox1.setBounds(330, 0, 110, 22);
 
         jLabel12.setText("Cluster Size");
+        jLayeredPane1.add(jLabel12);
         jLabel12.setBounds(270, 0, 110, 20);
-        jLayeredPane1.add(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -250,20 +253,20 @@ public class InterfaceTest extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(jTable4);
 
+        jLayeredPane1.add(jScrollPane7);
         jScrollPane7.setBounds(570, 30, 210, 120);
-        jLayeredPane1.add(jScrollPane7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Distance", "Hops", "Distance & Hops" }));
-        jComboBox2.setBounds(530, 0, 110, 20);
-        jLayeredPane1.add(jComboBox2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.add(jComboBox2);
+        jComboBox2.setBounds(530, 0, 110, 22);
 
         jLabel15.setText("Complexity By");
+        jLayeredPane1.add(jLabel15);
         jLabel15.setBounds(460, 0, 110, 20);
-        jLayeredPane1.add(jLabel15, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel8.setText("Stage 3 : Diary Records & Calendar Preferences");
-        jLabel8.setBounds(10, 20, 360, 14);
-        jLayeredPane3.add(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane3.add(jLabel8);
+        jLabel8.setBounds(10, 20, 360, 16);
 
         jTable2.setAutoCreateRowSorter(true);
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -286,8 +289,8 @@ public class InterfaceTest extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(jTable2);
 
+        jLayeredPane3.add(jScrollPane5);
         jScrollPane5.setBounds(20, 50, 452, 90);
-        jLayeredPane3.add(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jCheckBox1.setText("Travel on Weekends");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -295,16 +298,16 @@ public class InterfaceTest extends javax.swing.JFrame {
                 jCheckBox1ActionPerformed(evt);
             }
         });
-        jCheckBox1.setBounds(620, 10, 140, 23);
-        jLayeredPane3.add(jCheckBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane3.add(jCheckBox1);
+        jCheckBox1.setBounds(620, 10, 140, 25);
 
         jLabel10.setText("Log End Date");
+        jLayeredPane3.add(jLabel10);
         jLabel10.setBounds(510, 70, 150, 20);
-        jLayeredPane3.add(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel11.setText("Log Start Date");
-        jLabel11.setBounds(510, 40, 150, 20);
-        jLayeredPane3.add(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabel11.setText("Desired Claim Percentage");
+        jLayeredPane3.add(jLabel11);
+        jLabel11.setBounds(320, 10, 150, 20);
 
         jTextField1.setText("1-Aug-2013");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -312,40 +315,52 @@ public class InterfaceTest extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jTextField1.setBounds(620, 40, 130, 20);
-        jLayeredPane3.add(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane3.add(jTextField1);
+        jTextField1.setBounds(620, 40, 130, 22);
 
         jTextField4.setText("30-Oct-2013");
-        jTextField4.setBounds(620, 70, 130, 20);
-        jLayeredPane3.add(jTextField4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane3.add(jTextField4);
+        jTextField4.setBounds(620, 70, 130, 22);
 
         jLabel13.setText("Odometer Start");
+        jLayeredPane3.add(jLabel13);
         jLabel13.setBounds(510, 100, 100, 20);
-        jLayeredPane3.add(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
             }
         });
-        jTextField5.setBounds(620, 100, 130, 20);
-        jLayeredPane3.add(jTextField5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane3.add(jTextField5);
+        jTextField5.setBounds(620, 100, 130, 22);
 
         jLabel14.setText("Odometer End");
+        jLayeredPane3.add(jLabel14);
         jLabel14.setBounds(510, 130, 99, 20);
-        jLayeredPane3.add(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
             }
         });
-        jTextField6.setBounds(620, 130, 130, 20);
-        jLayeredPane3.add(jTextField6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane3.add(jTextField6);
+        jTextField6.setBounds(620, 130, 130, 22);
+
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
+        jLayeredPane3.add(jTextField7);
+        jTextField7.setBounds(480, 10, 80, 22);
+
+        jLabel16.setText("Log Start Date");
+        jLayeredPane3.add(jLabel16);
+        jLabel16.setBounds(510, 40, 150, 20);
 
         jLabel9.setText("Stage 4 : Log Book Results");
-        jLabel9.setBounds(0, 10, 360, 14);
-        jLayeredPane4.add(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane4.add(jLabel9);
+        jLabel9.setBounds(0, 10, 360, 16);
 
         jTable3.setAutoCreateRowSorter(true);
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -376,8 +391,8 @@ public class InterfaceTest extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(jTable3);
 
+        jLayeredPane4.add(jScrollPane6);
         jScrollPane6.setBounds(10, 30, 770, 110);
-        jLayeredPane4.add(jScrollPane6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jButton2.setText("Generate LogBook");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -385,20 +400,20 @@ public class InterfaceTest extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jButton2.setBounds(620, 150, 160, 23);
-        jLayeredPane4.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane4.add(jButton2);
+        jButton2.setBounds(620, 150, 160, 25);
 
         DeductableKms.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         DeductableKms.setText("KMs");
         DeductableKms.setToolTipText("");
         DeductableKms.setName("DeductableKMS"); // NOI18N
-        DeductableKms.setBounds(190, 170, 150, 15);
-        jLayeredPane4.add(DeductableKms, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane4.add(DeductableKms);
+        DeductableKms.setBounds(200, 170, 400, 15);
 
         jLabel17.setText("Total claimable Kms in this run : ");
         jLabel17.setToolTipText("");
-        jLabel17.setBounds(10, 170, 200, 14);
-        jLayeredPane4.add(jLabel17, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane4.add(jLabel17);
+        jLabel17.setBounds(10, 170, 200, 16);
 
         jButton3.setText("Export");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -406,8 +421,15 @@ public class InterfaceTest extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jButton3.setBounds(620, 180, 160, 23);
-        jLayeredPane4.add(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane4.add(jButton3);
+        jButton3.setBounds(620, 180, 160, 25);
+
+        DeductableKms1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DeductableKms1.setText("KMs");
+        DeductableKms1.setToolTipText("");
+        DeductableKms1.setName("DeductableKMS"); // NOI18N
+        jLayeredPane4.add(DeductableKms1);
+        DeductableKms1.setBounds(10, 190, 400, 15);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -434,9 +456,9 @@ public class InterfaceTest extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 172, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jLayeredPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 153, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jLayeredPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                .add(jLayeredPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLayeredPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                 .add(6, 6, 6))
         );
 
@@ -556,15 +578,13 @@ public class InterfaceTest extends javax.swing.JFrame {
         
         
         
-        ArrayList<Double> loadingList = new ArrayList();
-        double RegionValue = 0.0;
-        for(int i=0;i<this.jTable4.getModel().getRowCount();i++)
-        {
-            RegionValue += Double.parseDouble(this.jTable4.getModel().getValueAt(i, 1).toString());
-            loadingList.add(RegionValue);
-        }
         
-        repo.SetGroupLoading(loadingList);
+        
+        
+        
+        
+        
+        
         
         
         
@@ -573,6 +593,11 @@ public class InterfaceTest extends javax.swing.JFrame {
         DateTime tempDate;
         DayRoute dr;
         int routeRef;
+        
+        
+        
+        
+        
         
         for(int i=0;i<this.jTable2.getModel().getRowCount();i++)
         {
@@ -586,6 +611,76 @@ public class InterfaceTest extends javax.swing.JFrame {
         
         DateTime startOn = dstrFmt.parseDateTime(this.jTextField1.getText());
         DateTime endOn = dstrFmt.parseDateTime(this.jTextField4.getText());
+        
+        
+        int countIncrement = 0 ;
+        boolean upd = false;
+        int setIncr = -10;
+        double maxP=0.0;
+        
+        ArrayList<Double> loadingList = new ArrayList();
+            
+        if(Double.parseDouble(this.jTextField7.getText())>0)
+        {
+            loadingList.add(50.0);
+            loadingList.add(30.0);
+            loadingList.add(20.0);
+            
+            
+        }
+        else
+        {
+            
+            double RegionValue = 0.0;
+            for(int i=0;i<this.jTable4.getModel().getRowCount();i++)
+            {
+                RegionValue += Double.parseDouble(this.jTable4.getModel().getValueAt(i, 1).toString());
+                loadingList.add(RegionValue);
+            }
+        }
+        
+        ArrayList<Double> itr = loadingList;
+        boolean loopBrk = false;
+        
+        for(int i=0;i<20;i++)
+        {
+            if(!loopBrk)
+            {
+//            upd = false;
+//            for(Double d : itr)
+//            {
+//                if(d < 100 && upd == false && d+setIncr >= 0 && itr.indexOf(d) >= countIncrement)
+//                {
+//                    itr.set(itr.indexOf(d), d + setIncr);
+//                    upd = true;
+//                    countIncrement = itr.indexOf(d);
+//                }
+//                
+//                if( d == 0 && upd == false)
+//                {
+//                    setIncr = 10;
+//                    countIncrement++;
+//                }
+//                
+//            }
+        
+        if(itr.get(countIncrement)>=10 && countIncrement < itr.size()-1)
+        {
+            
+            itr.set(countIncrement, itr.get(countIncrement)-10);
+        }   
+        else
+        {
+            if(countIncrement < itr.size()-1)
+            {
+                countIncrement++;
+            }
+            //itr.set(countIncrement, itr.get(countIncrement)-10);
+        }
+            
+        print(itr);
+        repo.SetGroupLoading(itr);
+        
         
         
         lg = new LogGenerator(repo, startOn,endOn,restr,GetMode(this.jComboBox2.getSelectedIndex()));
@@ -615,16 +710,44 @@ public class InterfaceTest extends javax.swing.JFrame {
          this.jTable3.setModel(new DefaultTableModel(tableData,columnData));
          this.jTable3.repaint();
         
-         this.DeductableKms.setText(String.valueOf(TotalDeductable) + " of Total : " + String.valueOf(TotalDistance));
+         this.DeductableKms.setText(String.valueOf(TotalDeductable) + " of Total : " + String.valueOf(TotalDistance) + " :  Percentage = " + String.valueOf(TotalDeductable*100/TotalDistance));
          this.repaint();
-        System.out.println("Done !");
+         
+         System.out.println(String.valueOf(TotalDeductable) + " of Total : " + String.valueOf(TotalDistance) + " :  Percentage = " + String.valueOf(TotalDeductable*100/TotalDistance));
+         
+         if(maxP < TotalDeductable*100/TotalDistance)
+         {
+             maxP = TotalDeductable*100/TotalDistance;
+         }
         
+        }    
+        
+        this.DeductableKms1.setText("Max Achievable with this data set : " + maxP + "%");
+
+        
+        if(maxP >= Double.parseDouble(this.jTextField7.getText()))
+        {
+            loopBrk = true;
+        }
+            
+            
+        }
         
        
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
+    public void print(ArrayList<Double> ll)
+    {
+        for(Double d : ll)
+        {
+            System.out.println(" Item at : " + ll.indexOf(d) + " - " + d);
+        }
+    }
+    
+    
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
@@ -658,6 +781,10 @@ public class InterfaceTest extends javax.swing.JFrame {
         // TODO add your handling code here:
          this.jFileChooser1.showSaveDialog(this);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -695,6 +822,7 @@ public class InterfaceTest extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DeductableKms;
+    private javax.swing.JLabel DeductableKms1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -710,6 +838,7 @@ public class InterfaceTest extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -743,6 +872,7 @@ public class InterfaceTest extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 
     private UserInput ui;
