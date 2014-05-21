@@ -11,6 +11,7 @@ import entity.Destination;
 import entity.LogRecord;
 import entity.RouteRepository;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.table.DefaultTableModel;
 import limitingrules.UserLimitations;
 import org.joda.time.DateTime;
@@ -48,7 +49,7 @@ public class LogBookCore {
    * @param complexMode Group Mode : DIST|HOPS|DISTHOPS String
    * @return LogGenerator This returns sum of numA and numB.
    */
-    public static LogGenerator GetLogBook( String ha,ArrayList<String> hal,
+    public static ArrayList<LogRecord> GetLogBook( String ha,ArrayList<String> hal,
                                    String wa,ArrayList<String> wal,
                                    ArrayList<String> cal, 
                                    boolean StartAtAny,
@@ -139,8 +140,8 @@ public class LogBookCore {
         if(percentClaim>0)
         {
             loadingList.add(50.0);
-            loadingList.add(30.0);
-            loadingList.add(20.0);
+            loadingList.add(80.0);
+            loadingList.add(100.0);
             
             
         }
@@ -157,8 +158,10 @@ public class LogBookCore {
         
         ArrayList<Double> itr = loadingList;
         boolean loopBrk = false;
+        ArrayList<LogGenerator> iterateThrough = new ArrayList<LogGenerator>();
+        int maxIndex = 0;
         
-        for(int i=0;i<20;i++)
+        for(int i=0;i<40;i++)
         {
             if(!loopBrk)
             {
@@ -180,19 +183,19 @@ public class LogBookCore {
 //                
 //            }
         
-        if(itr.get(countIncrement)>=10 && countIncrement < itr.size()-1)
-        {
-            
-            itr.set(countIncrement, itr.get(countIncrement)-10);
-        }   
-        else
-        {
-            if(countIncrement < itr.size()-1)
-            {
-                countIncrement++;
-            }
-            //itr.set(countIncrement, itr.get(countIncrement)-10);
-        }
+                if(itr.get(countIncrement)>=10 && countIncrement < itr.size()-1)
+                {
+
+                    itr.set(countIncrement, itr.get(countIncrement)-10);
+                }   
+                else
+                {
+                    if(countIncrement < itr.size()-1)
+                    {
+                        countIncrement++;
+                    }
+                    //itr.set(countIncrement, itr.get(countIncrement)-10);
+                }
             
 //        print(itr);
         repo.SetGroupLoading(itr);
@@ -221,6 +224,8 @@ public class LogBookCore {
          if(maxP < TotalDeductable*100/TotalDistance)
          {
              maxP = TotalDeductable*100/TotalDistance;
+             iterateThrough.add(lg);
+             maxIndex = iterateThrough.indexOf(lg);
          }
         
         }    
@@ -235,8 +240,9 @@ public class LogBookCore {
             
         }
         
+        System.out.println(" Max P : " + maxP);
         
-        return lg;
+        return SetPersonalRecords(iterateThrough.get(maxIndex).GetRecords(),startODO,endODO);
         
         
         
@@ -259,13 +265,61 @@ public class LogBookCore {
         
         ClientAddresses.add("47 Robinson St,Dandenong VIC 3175");
         
-        LogGenerator lgtest = LogBookCore.GetLogBook(home, HomeAddresses, 
+        ArrayList<LogRecord> lgtest = LogBookCore.GetLogBook(home, HomeAddresses, 
                                                      workHQ, WorkAddresses, 
                                                      ClientAddresses, false, false, 
                                                      "1-Mar-2013", "1-Mar-2014", 
                                                      10000, 25000, 
-                                                     65, 3, "DISTHOPS");
-  
+                                                     65, 3, "DIST");
+        
+        
+        System.out.println(" LG TEST : " + lgtest.size());
     }
+    
+    
+    
+    public static ArrayList<LogRecord> SetPersonalRecords(ArrayList<LogRecord> logBook,double startOdo,double endOdo)
+    {
+        //public void ExportLogBook(String ds,ArrayList<LogRecord> logBook,double startOdo,double endOdo)
+    
+       
+        double expectedTotalTravel = 0.0;
+        double personalTravelRatio = 0.0; 
+        double totalDistance = 0.0,deductableDistance = 0.0,personalTravel = 0.0;
+        Random personalShare = new Random();
+        
+        
+        for(LogRecord lr : logBook)
+        {
+            expectedTotalTravel += lr.GetDistance();
+        }
+        
+        expectedTotalTravel = endOdo - startOdo - expectedTotalTravel;
+        personalTravelRatio = expectedTotalTravel/logBook.size();
+        
+        
+        
+        for(LogRecord lr : logBook)
+        {
+            lr.SetPersonalTravel(personalTravelRatio*personalShare.nextFloat()*2);
+            //Odometer Columns
+            //Total distance : lr.GetLogItems().get(4)
+            //Deductable :         lr.GetLogItems().get(5)
+            // Personal Travel : lr.GetPersonalTravel()
+            totalDistance = 0.0;deductableDistance = 0.0; personalTravel = 0.0;
+            if(lr.GetLogItems().size()>2)
+            {
+                totalDistance = Double.parseDouble(lr.GetLogItems().get(4).toString());
+                deductableDistance = Double.parseDouble(lr.GetLogItems().get(5).toString());
+            }
+            personalTravel = lr.GetPersonalTravel();
+            startOdo += totalDistance + personalTravel;
+            //System.out.print("PT : " + lr.GetPersonalTravel() + "\t");lr.print();
+        }
+        System.out.println(" End ODO : " + endOdo);
+        return logBook;
+        
+    }
+    
     
 }
