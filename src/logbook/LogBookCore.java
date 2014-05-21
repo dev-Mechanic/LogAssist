@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.table.DefaultTableModel;
 import limitingrules.UserLimitations;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -263,13 +266,14 @@ public class LogBookCore {
         WorkAddresses.add("800 Stud Road Scoresby VIC 3179");
         WorkAddresses.add("9 Helen Kob Drive Braeside VIC 3195");
         
-        ClientAddresses.add("47 Robinson St,Dandenong VIC 3175");
+        ClientAddresses.add("47 Robinson St Dandenong VIC 3175");
         
         ArrayList<LogRecord> lgtest = LogBookCore.GetLogBook(home, HomeAddresses, 
                                                      workHQ, WorkAddresses, 
                                                      ClientAddresses, false, false, 
                                                      "1-Mar-2013", "1-Mar-2014", 
                                                      10000, 25000, 
+<<<<<<< HEAD
                                                      65, 3, "DIST");
         
         
@@ -279,6 +283,14 @@ public class LogBookCore {
     
     
     public static ArrayList<LogRecord> SetPersonalRecords(ArrayList<LogRecord> logBook,double startOdo,double endOdo)
+=======
+                                                     65, 3, "DISTHOPS");
+        SetPersonalRecords(lgtest.GetRecords(),10000.0,25000.0);
+    }
+    
+    
+    public static void SetPersonalRecords(ArrayList<LogRecord> logBook,double startOdo,double endOdo)
+>>>>>>> FETCH_HEAD
     {
         //public void ExportLogBook(String ds,ArrayList<LogRecord> logBook,double startOdo,double endOdo)
     
@@ -302,6 +314,11 @@ public class LogBookCore {
         for(LogRecord lr : logBook)
         {
             lr.SetPersonalTravel(personalTravelRatio*personalShare.nextFloat()*2);
+<<<<<<< HEAD
+=======
+            
+            
+>>>>>>> FETCH_HEAD
             //Odometer Columns
             //Total distance : lr.GetLogItems().get(4)
             //Deductable :         lr.GetLogItems().get(5)
@@ -314,11 +331,16 @@ public class LogBookCore {
             }
             personalTravel = lr.GetPersonalTravel();
             startOdo += totalDistance + personalTravel;
+<<<<<<< HEAD
             //System.out.print("PT : " + lr.GetPersonalTravel() + "\t");lr.print();
         }
         System.out.println(" End ODO : " + endOdo);
         return logBook;
         
+=======
+            System.out.print("PT : " + lr.GetPersonalTravel() + "\t");lr.print();
+        }
+>>>>>>> FETCH_HEAD
     }
     
     
