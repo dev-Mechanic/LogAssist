@@ -243,10 +243,7 @@ public class LogBookCore {
             
         }
         
-        System.out.println(" Max P : " + maxP);
-        
-        return SetPersonalRecords(iterateThrough.get(maxIndex).GetRecords(),startODO,endODO);
-        
+        return SetPersonalRecords(lg.GetRecords(),startODO,endODO);
         
         
     }
@@ -273,24 +270,19 @@ public class LogBookCore {
                                                      ClientAddresses, false, false, 
                                                      "1-Mar-2013", "1-Mar-2014", 
                                                      10000, 25000, 
-<<<<<<< HEAD
                                                      65, 3, "DIST");
         
-        
+        //Changes Fixed...
+        SetPersonalRecords(lgtest,10000.0,25000.0);
         System.out.println(" LG TEST : " + lgtest.size());
     }
     
     
     
+    
+    
+    
     public static ArrayList<LogRecord> SetPersonalRecords(ArrayList<LogRecord> logBook,double startOdo,double endOdo)
-=======
-                                                     65, 3, "DISTHOPS");
-        SetPersonalRecords(lgtest.GetRecords(),10000.0,25000.0);
-    }
-    
-    
-    public static void SetPersonalRecords(ArrayList<LogRecord> logBook,double startOdo,double endOdo)
->>>>>>> FETCH_HEAD
     {
         //public void ExportLogBook(String ds,ArrayList<LogRecord> logBook,double startOdo,double endOdo)
     
@@ -314,11 +306,9 @@ public class LogBookCore {
         for(LogRecord lr : logBook)
         {
             lr.SetPersonalTravel(personalTravelRatio*personalShare.nextFloat()*2);
-<<<<<<< HEAD
-=======
+
             
             
->>>>>>> FETCH_HEAD
             //Odometer Columns
             //Total distance : lr.GetLogItems().get(4)
             //Deductable :         lr.GetLogItems().get(5)
@@ -331,16 +321,11 @@ public class LogBookCore {
             }
             personalTravel = lr.GetPersonalTravel();
             startOdo += totalDistance + personalTravel;
-<<<<<<< HEAD
             //System.out.print("PT : " + lr.GetPersonalTravel() + "\t");lr.print();
         }
-        System.out.println(" End ODO : " + endOdo);
-        return logBook;
         
-=======
-            System.out.print("PT : " + lr.GetPersonalTravel() + "\t");lr.print();
-        }
->>>>>>> FETCH_HEAD
+        return logBook;
+            
     }
     
     
